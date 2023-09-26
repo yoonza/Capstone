@@ -1,0 +1,138 @@
+<!-- <?php
+    session_start();
+    header('Content-Type: text/html; charset = utf-8');
+	$conn = mysqli_connect("localhost", "root", "dmsdud0513!", "gande_member");
+
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+    if (isset($_SESSION['username'])) {
+?> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "utf-8" />
+    <title>My Info</title>
+    <style>
+    * {
+        margin: 0 auto;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #B7F0B1;
+        font-weight: bold;
+    }
+    a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .find {
+        text-align: center;
+        width: 500px;
+        margin-top: 30px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); 
+    }
+    .find a {
+        color: #333;
+        text-decoration: none;
+        font-weight: bold; /* 텍스트 굵게 설정 */
+    }
+    .find a:hover {
+        text-shadow: 0px 0px 3px yellow; /* 클릭 시 텍스트 그림자 크게 변경 */
+    }
+
+    .find fieldset {
+        border: 3px solid #333; /* 선의 두께와 색상을 설정합니다. */
+        padding: 10px; /* 선 주위의 여백을 조절합니다. */
+    }
+
+    .find input[type="submit"] {
+        background-color: gray; /* 배경색을 변경합니다. */
+        color: #fff; /* 텍스트 색상을 변경합니다. */
+        border: none;
+        padding: 4px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .find input[type="submit"]:hover {
+        background-color: lightgray; /* 클릭 시 배경색 변경 */
+        transform: scale(1.1); /* 클릭 시 크기 확대 효과 */
+    }
+
+    .find input[type="text"],
+    .find input[type="password"] {
+        border: 2px solid black;
+    }
+
+    .find input[type="text"]:hover,
+    .find input[type="password"]:hover {
+        border: 3px solid red; /* 호버 시 테두리 색상 변경 */
+    }
+
+</style>
+</head>
+    <body>
+        <div class = "find">
+            <form method = "post" action = "gande_member_update.php">
+                <!-- <?php
+                    $sql = "SELECT * FROM gande_member WHERE username = '{$_SESSION['username']}'";
+                    $result = mysqli_query($conn, $sql);
+                    $gande_member = mysqli_fetch_array($result);
+                    if (!$gande_member) { // 회원 정보가 없는 경우
+                        echo "<script>alert('회원 정보를 찾을 수 없습니다.'); history.back();</script>";
+                        exit;
+                    }
+                ?> -->
+                <h1>MY PAGE</h1>
+                <br>
+                <p><a href = "main.php">HOME</a></p>
+                <br>
+                <fieldset>
+                    <table>
+                        <tr>
+                            <br>
+                            <td>이름</td>
+                            <td><input type = "text" size = "20" name = "name" placeholder = "이름" value = "<?php echo $gande_member['name']; ?>"></td>
+                        </tr>
+                        <tr>
+                            <td>전화번호</td>
+                            <td><input type = "text" size = "20" name = "phone" placeholder = "전화번호" value = "<?php echo $gande_member['phone']; ?>"></td>
+                        </tr>
+                        <tr>
+                            <td>아이디</td>
+                            <td><input type = "text" size = "20" name = "username" value = "<?php echo $_SESSION['username']; ?>"></td>
+                        </tr>
+                        <tr>
+                            <td>비밀번호</td>
+                            <td><input type = "password" size = "20" name = "password" placeholder = "비밀번호"></td>
+                        </tr>
+                        <tr>
+                            <td>이메일</td>
+                            <td><input type = "text" size = "20" name = "email" placeholder = "이메일" value = "<?php echo $gande_member['email']; ?>"></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <input type = "submit" value = "정보변경" />
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
+<!-- /* <?php 
+    } else { // 로그인 되어 있지 않은 경우
+        echo "<script>alert('로그인 후 이용해주세요.'); location.href='login.php';</script>";
+        exit;
+    }
+?> -->
