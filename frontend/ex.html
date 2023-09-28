@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>스타벅스 위치 지도</title>
+    <link rel="icon" href="/Users/yoonza/Desktop/Capstone/frontend/icons8-map-32.png" type="image/x-icon">
+    <style>
+        /* 스타일을 추가할 수 있습니다. */
+    </style>
+</head>
+<body>
+    <!-- 지도를 표시할 div 입니다 -->
+    <div id="map" style="width:100%;height:100vh;"></div>
+
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2f5a41f263030fafcd0f9e3e1ed71321"></script>
+    <script>
+
+        var mapContainer = document.getElementById('map'); // 지도를 표시할 div
+        var mapOption = {
+            center: new kakao.maps.LatLng(36.7696923, 126.931490), // 지도의 중심좌표
+            level: 6 // 지도의 확대 레벨
+        };
+
+        // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        for (var i = 0; i < mapData.length; i++) {
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: mapData[i].latlng, // 마커를 표시할 위치
+                title: mapData[i].title // 마커의 타이틀
+            });
+
+            // 마커에 표시할 인포윈도우를 생성합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                content: '<div style="padding:5px;">' + mapData[i].title + '</div>' // 인포윈도우에 표시할 내용
+            });
+
+            // 마커에 클릭 이벤트를 등록합니다
+            kakao.maps.event.addListener(marker, 'click', function() {
+                // 클릭한 마커에 인포윈도우를 표시합니다
+                infowindow.open(map, this);
+            });
+        }
+    </script>
+</body>
+</html>
