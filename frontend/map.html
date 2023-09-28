@@ -9,33 +9,42 @@
     <!-- 지도를 표시할 div 입니다 -->
     <div id="map" style="width:100%;height:100vh;"></div>
 
-    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2f5a41f263030fafcd0f9e3e1ed71321"></script>
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2f5a41f263030fafcd0f9e3e1ed71321&libraries=clusterer"></script>
     
     <!-- markers.js 파일을 불러옵니다 -->
     <script type="text/javascript" src="markers.js"></script>
 
     <script>
-        var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
-        var mapOption = { 
+        const mapContainer = document.getElementById('map'); // 지도를 표시할 div 
+        const mapOption = { 
             center: new kakao.maps.LatLng(36.7696923, 126.931490), // 지도의 중심좌표
-            level: 8 // 지도의 확대 레벨
+            level: 10 // 지도의 확대 레벨
         };
 
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-        var map = new kakao.maps.Map(mapContainer, mapOption); 
+        const map = new kakao.maps.Map(mapContainer, mapOption); 
+        
+        // 마커 클러스터러를 생성합니다 
+        const clusterer = new kakao.maps.MarkerClusterer({
+            map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
+            averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+            minLevel: 10 // 클러스터 할 최소 지도 레벨 
+        });
 
-        for (var i = 0; i < positions.length; i ++) {    
-            // 마커 이미지를 생성합니다    
-            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-            
-            // 마커를 생성합니다
-            var marker = new kakao.maps.Marker({
-                map: map, // 마커를 표시할 지도
-                position: positions[i].latlng, // 마커를 표시할 위치
-                title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                image : markerImage // 마커 이미지 
+        const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+
+        for (const place of places) {
+            const marker =  new kakao.maps.Marker({
+                title : place.title,
+                position : place.latlng,
+                image : markerImage,
             });
+            
+            // 클러스터러에 마커들을 추가합니다
+            clusterer.addMarker(marker);
         }
+
+       
     </script>
 </body>
 </html>
