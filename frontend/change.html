@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kakao Maps Example</title>
+
+    <!-- Kakao 지도 API 스크립트 추가 -->
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2f5a41f263030fafcd0f9e3e1ed71321"></script>
+
+    <!-- 스타일 시트 또는 추가적인 스크립트를 여기에 추가할 수 있습니다 -->
+</head>
+<body>
+    <!-- 지도를 표시할 div 엘리먼트 -->
+    <div id="map" style="width: 100%; height: 500px;"></div>
+
+    <!-- CSV 파일을 읽어와 데이터를 출력할 div 엘리먼트 -->
+    <div id="csvData"></div>
+
+    <!-- Kakao 지도 API 로드 후에 코드 실행 -->
+    <script type="text/javascript">
+        // Kakao 지도 API 스크립트가 로드된 후에 실행
+        kakao.maps.load(() => {
+            // Kakao 지도 API 사용 가능
+            const map = new kakao.maps.Map(document.getElementById('map'), {
+                center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도 중심 좌표
+                level: 3 // 지도 확대 레벨
+            });
+
+            // 서버에서 CSV 데이터 가져오기
+            fetch('/get-csv-data')
+                .then(response => response.text())
+                .then(data => {
+                    // CSV 데이터를 출력할 div 엘리먼트에 표시
+                    document.getElementById('csvData').textContent = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+</html>
