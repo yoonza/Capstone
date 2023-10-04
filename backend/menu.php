@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	/*session_start();
 
 	$conn = mysqli_connect("localhost", "root", "", "gande_member");
 
@@ -14,7 +14,7 @@
     	setcookie('username', $username, time() + 3600, '/');
     	session_start();
     	$_SESSION['username'] = $username;
-	}
+	}*/
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@
 		<meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>GANDE's MENU</title>
+        <title>Menu recommendation</title>
         <meta name="description" content="여러분의 취향을 담아 드립니다. " />
         <meta name="keywords" content="css3, perspective, 3d, jquery, transform3d, responsive, template, restaurant, menu, leaflet, folded, flyer, concept" />
         <meta name="author" content="Codrops" />
@@ -42,7 +42,7 @@
                     <strong>&laquo; GANDE HOME </strong>
                 </a>
                 <span class="right">
-                <?php
+                  <?php
 					if (isset($_SESSION['username']) || isset($_COOKIE['username'])) {
     				// 로그인 상태
     				if (isset($_SESSION['username'])) {
@@ -84,7 +84,6 @@
 				<h1>Welcome to GANDE's MENU</h1>
 				<h2>
                     여러분의 취향을 담아 드립니다. <a href="main.php">GANDE</a>
-					<span class="demo-note">여러분의 취향 카페를 메뉴판에서 확인하려면 아래 메뉴판을 참조해주세요!</span>
 				</h2>
 				
 				<!--<div class="support-note">--><!-- let's check browser support with modernizr -->
@@ -107,12 +106,12 @@
 
 							<div class="rm-front">
 								<div class="rm-content">
-
-									<div class="rm-logo"></div>
+									<br>
+									<br>
 									<h2>GANDE</h2>
 									<h3>CAFE &amp; DESSERT</h3>
 
-									<a href="#" class="rm-button-open">View the Menu</a>
+									<a href="#" class="rm-button-open">View Details</a>
                                     <script>
                                       const menuButton = document.getElementById("menu-button");
                                       menuButton.addEventListener("click", () => {
@@ -121,11 +120,10 @@
                                     </script>
 									<div class="rm-info">
 										<p>
-										<strong>GANDE</strong><br>
-										SOONCHUNHYANG UNIVERSITY<br>
-										DEPARTMENT OF COMPUTER SOFTWARE ENGINEERING<br>
-										<strong>Phone</strong> 01012345678<br>
-										<strong>EMAIL</strong> gracekim0513@naver.com</p>
+										<br>
+										<strong>Copyright 2023. Gande ALL RIGHTS RESERVED.</strong><br>
+										<strong>EMAIL</strong> gracekim0513@naver.com<br>
+										<strong>EMAIL</strong> wldbs1110@naver.com</p>
 									</div>
 
 								</div><!-- /rm-content -->
@@ -237,29 +235,29 @@
 							<div class="rm-back">
 								<span class="rm-close">Close</span>
 								<div class="rm-content">
-									<h4>오늘의 카페 추천</h4>
+									<h4>Gande's Hot Place</h4>
                                     <!--알고리즘 추천 -->
 									<dl>
-										<dt><a href="http://herbivoracious.com/2012/08/crepes-with-roasted-french-plums-yogurt-and-honey.html" class="rm-viewdetails" data-thumb="images/5.jpg">French Plum Crepes</a></dt>
-										<dd>Crepes with roasted french plums, yogurt &amp; honey</dd>
+										<dt><a href="https://www.starbucks.co.kr/index.do">스타벅스 강남R점</a></dt>
+										<dd>시그니처 로스팅, 가벼운 식사, 무료 Wi-Fi로 잘 알려진 미국 시애틀 기반의 커피하우스 체인점입니다!</dd>
 										
-										<dt><a href="http://herbivoracious.com/2012/05/butterscotch-pudding-with-bittersweet-ganache-and-caramelize-white-chocolate-crunchies-recipe.html" class="rm-viewdetails" data-thumb="images/6.jpg">Butterscotch Pudding</a></dt>
-										<dd>Butterscotch pudding with bittersweet ganache and caramelize white chocolate crispies</dd>
+										<dt><a href="https://www.instagram.com/cafe_annac">카페 안낙</a></dt>
+										<dd>아산 신정호에 위치한 카페. 맛있는 커피와 디저트와 함께 아름다운 호수뷰를 구경하세요!</dd>
 										
-										<dt><a href="http://herbivoracious.com/2009/12/gateaux-de-crepes-recipe.html" class="rm-viewdetails" data-thumb="images/12.jpg">Chocolate Gâteau de Crêpes</a></dt>
-										<dd>Gâteau de crêpes with chocolate pastry cream and dulce de leche</dd>
+										<dt><a href="https://www.terarosa.com/market/main?viewName=redirect%3A%2Fmarket%2Fmain">테라로사 커피공장 강릉본점</a></dt>
+										<dd>아름다운 강릉에서 커피 로스터리로 시작, 한국의 스페셜티 커피의 선구자인 테라로사에 방문하세요!</dd>
 										
-										<dt><a href="http://herbivoracious.com/2009/05/dutch-baby-with-sauteed-apples-giant-ovenbaked-pancakes-recipe.html" class="rm-viewdetails" data-thumb="images/10.jpg">Dutch Baby With Sauteed Apples</a></dt>
-										<dd>Dutch ginat oven-baked pancakes with sauteed apples</dd>
+										<dt><a href="https://www.instagram.com/flower_illda/">카페 일다</a></dt>
+										<dd>한창 좋아진게 나타나 보이다라는 뜻의 일다, 전대 후문에 위치한 카페입니다! </dd>
 										
-										<dt><a href="http://herbivoracious.com/2008/08/blueberry-napol.html" class="rm-viewdetails" data-thumb="images/7.jpg">Blueberry Napoleon</a></dt>
-										<dd>Blueberry Napoleon with crème fraîche and raspberry powder</dd>
+										<dt><a href="https://www.instagram.com/cafe_toenmaru/">카페 툇마루</a></dt>
+										<dd>흑임자커피와 두부케이크가 유명한 카페 툇마루입니다. 초심을 잃지 않고 한잔한잔 준비합니다!</dd>
 										
-										<dt><a href="http://herbivoracious.com/2008/09/rings-of-saturn.html" class="rm-viewdetails" data-thumb="images/2.jpg">Rings of Saturn</a></dt>
-										<dd>Saturn peach on challah french toast</dd>
+										<dt><a href="https://www.mega-mgccoffee.com/">메가MGC커피 부천소사본점</a></dt>
+										<dd>언제 어디서나, 부담스럽지 않은 가격과 대용량으로 모든 사람들에게 사랑받는 메가MGC커피 입니다.</dd>
 										
-										<dt><a href="http://herbivoracious.com/2008/04/recipe-atayef.html" class="rm-viewdetails" data-thumb="images/9.jpg">Classic Atayef</a></dt>
-										<dd>Syrian ricotta-filled dessert pancakes</dd>
+										<dt><a href="https://www.instagram.com/allthatcoffee/">올댓커피 본점</a></dt>
+										<dd>에스프레소 및 커피와 디저트를 판매하는 한국의 에스프레소바 카페입니다.</dd>
 									</dl>
 									<div class="rm-order">
 										<p><strong>카페 사장님이시라면?</strong><br>카페 등록 하기를 통해 사장님의 카페를 알려주세요!<br>
