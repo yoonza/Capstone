@@ -1,0 +1,26 @@
+.data-box {
+    padding: 10px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1);
+
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.data-box:hover {
+    transform: scale(1.05);
+    background-color: #e0e0e0;
+}
+
+.data-box strong {
+    font-family: 'Comic Sans MS', cursive, 'Arial', sans-serif;
+    font-size: 16px; /* 글자 크기 조절 */
+    color: #FF6B6B; /* 텍스트 색상 변경 */
+}
+
+
+body {
+    background-color: #B7f0b1;
+}
