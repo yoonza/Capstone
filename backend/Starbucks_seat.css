@@ -2,17 +2,19 @@
 
 * {
   box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 body {
-  background-color: #242333;
-  color: #fff;
+  background-color: #B7f0b1;
+  color: black;
+  font-weight: bold;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  font-family: 'Lato', sans-serif;
   margin: 0;
 }
 
@@ -27,7 +29,8 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    font-family: Cambria, Georgia, serif;
+    font-weight: bold;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
 }
 
@@ -92,7 +95,7 @@ body {
 }
 
 .seat {
-  background-color: #444451;
+  background-color: #DEB887;
   height: 12px;
   width: 15px;
   margin: 3px;
@@ -101,7 +104,7 @@ body {
 }
 
 .table {
-    background-color: #444451; /* 테이블 배경색 */
+    background-color: #DEB887; /* 테이블 배경색 */
     border-radius: 5px; /* 테이블 모양을 둥글게 만듦 */
     width: 25px; /* 테이블 너비 */
     height: 20px; /* 테이블 높이 */
@@ -170,7 +173,7 @@ body {
     width: 100%;
     margin: 15px 0;
     transform: rotateX(-45deg);
-    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+    box-shadow: 0 1px 8px black;
     background-size: 100% 70px; /* 배경 이미지를 .screen 요소의 크기에 맞게 조절 */
 }
 
@@ -193,14 +196,17 @@ body {
 }
 
 p.text span {
-  color: #6feaf6;
+  color: darkgreen;
+  font-weight: bolder;
 }
 
 a.rm-button-open {
-	color: #65e688;
-	font-size: 16px;
+	color: black;
+	font-size: 20px;
 	line-height: 45px;
 	margin: 10px auto;
+  align-items: center;
+  text-decoration: none;
 	display: block;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.8);
 }

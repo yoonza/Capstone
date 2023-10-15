@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	$conn = mysqli_connect("localhost", "root", "", "gande_member");
+	$conn = mysqli_connect("localhost", "root", "Forestz01!!", "gande_member");
 
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
@@ -25,6 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="seat.css" />
     <title>Cafe Seat Booking</title>
+    <script src="http://kit.fontawesome.com/e1a4d00b81.js" crossorigin="anonymous"></script>
     <script src="seat.js"></script>
   </head>
   <body>
@@ -38,7 +39,7 @@
 				// 로그인 상태
 				if (isset($_SESSION['username'])) {
     				$username = $_SESSION['username'];
-					$sql = "SELECT name FROM gande_member WHERE username = '{$username}'";
+					$sql = "SELECT name FROM members WHERE username = '{$username}'";
         			$result = mysqli_query($conn, $sql);
         			$row = mysqli_fetch_array($result);
         			$name = $row['name'];
@@ -49,7 +50,7 @@
                     }
 				} else {
     				$username = $_COOKIE['username'];
-					$sql = "SELECT name FROM gande_member WHERE username = '{$username}'";
+					$sql = "SELECT name FROM members WHERE username = '{$username}'";
         			$result = mysqli_query($conn, $sql);
         			$row = mysqli_fetch_array($result);
         			$name = $row['name'];
@@ -69,7 +70,7 @@
         </span>
     </div>
     <div class="movie-container">
-      <label for="movie">Pick a seat: </label>
+      <label for="movie"><strong>Pick a seat:</strong></label>
       <select id="movie">
         <option value="Starbucks">Starbucks</option>
         <option value="Twosome Place">Twosome Place</option>

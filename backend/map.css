@@ -1,0 +1,46 @@
+* {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.top {
+    line-height: 24px;
+    font-size: 11px;
+    background: black;
+    background: #B7f0b1;
+    text-transform: uppercase;
+    z-index: 9999;
+    position: relative;
+    font-family: Cambria, Georgia, serif;
+    box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
+}
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+
+.top:before,
+.top:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.top:after {
+    clear: both
+}
+
+.top a {
+    padding: 0px 10px;
+    letter-spacing: 1px;
+    color: #333;
+    display: inline-block;
+}
+
+.top a:hover {
+    background: #B7f0b1;
+}
+
+.top span.right {
+    float: right
+}
+
+.top span.right a {
+    float: left;
+    display: block;
+}

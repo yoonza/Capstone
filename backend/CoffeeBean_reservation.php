@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	$conn = mysqli_connect("localhost", "root", "", "gande_member");
+	$conn = mysqli_connect("localhost", "root", "Forestz01!!", "gande_member");
 
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
@@ -25,6 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="CoffeeBean_seat.css" />
     <title>Cafe Seat Booking</title>
+    <script src="http://kit.fontawesome.com/e1a4d00b81.js" crossorigin="anonymous"></script>
   </head>
   <body>
   <div class="top">
@@ -32,40 +33,34 @@
             <strong>&laquo; GANDE HOME </strong>
         </a>
         <span class="right">
-            <?php
-				if (isset($_SESSION['username']) || isset($_COOKIE['username'])) {
-				// 로그인 상태
-				if (isset($_SESSION['username'])) {
-    				$username = $_SESSION['username'];
-					$sql = "SELECT name FROM gande_member WHERE username = '{$username}'";
-        			$result = mysqli_query($conn, $sql);
-        			$row = mysqli_fetch_array($result);
-        			$name = $row['name'];
-					echo "<a href='mypage.php'><strong>{$name}님 환영합니다!</strong></a>";
-                    function redirect($url) {
-                        header('Location: contact.php'.$url);
-                        exit();
-                    }
-				} else {
-    				$username = $_COOKIE['username'];
-					$sql = "SELECT name FROM gande_member WHERE username = '{$username}'";
-        			$result = mysqli_query($conn, $sql);
-        			$row = mysqli_fetch_array($result);
-        			$name = $row['name'];
-        			echo "<a href='mypage.php'><strong>{$name}님 환영합니다!</strong></a>";
-				}
-				// 로그아웃 버튼 표시
-				echo '<a href="logout.php"><strong>로그아웃</strong></a>';
-
-				// echo '<li><a href="mypage.php">마이페이지</a></li>';
-				} else {
-				// 로그아웃 상태
-    			// 로그인 버튼 표시
-    			echo '<a href="login.php"><strong>로그인</strong></a>';
-				}
-                echo '<a href="contact.php"><strong>고객센터</strong></a>';
-			?>
-        </span>
+        <?php
+          if (isset($_SESSION['username']) || isset($_COOKIE['username'])) {
+            if (isset($_SESSION['username'])) {
+              $username = $_SESSION['username'];
+              $sql = "SELECT name FROM members WHERE username = '{$username}'";
+              $result = mysqli_query($conn, $sql);
+              $row = mysqli_fetch_array($result);
+              $name = $row['name'];
+              echo "<a href='mypage.php'><strong>{$name}님 환영합니다!</strong></a>";
+              function redirect($url) {
+                header('Location: contact.php'.$url);
+                exit();
+              }
+            } else {
+              $username = $_COOKIE['username'];
+              $sql = "SELECT name FROM members WHERE username = '{$username}'";
+              $result = mysqli_query($conn, $sql);
+              $row = mysqli_fetch_array($result);
+              $name = $row['name'];
+              echo "<a href='mypage.php'><strong>{$name}님 환영합니다!</strong></a>";
+            }
+            echo '<a href="logout.php"><strong>로그아웃</strong></a>';
+          } else {
+            echo '<a href="login.php"><strong>로그인</strong></a>';
+          }
+          echo '<a href="contact.php"><strong>고객센터</strong></a>';
+        ?>
+      </span>
     </div>
     <div class="movie-container">
       <label for="movie">Pick a seat: </label>
