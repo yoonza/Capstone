@@ -1,8 +1,12 @@
 /* css */
-body {
-    font-family: Arial, sans-serif;
+*
+{
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
+body {
+    background-color: #B7f0b1;
+}
 .top {
     line-height: 24px;
     font-size: 11px;
@@ -14,8 +18,10 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    font-family: Cambria, Georgia, serif;
+    font-weight: bold;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
+    text-decoration: none;
 }
 
 /* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
@@ -35,6 +41,7 @@ body {
     letter-spacing: 1px;
     color: #333;
     display: inline-block;
+    text-decoration: none;
 }
 
 .top a:hover {
@@ -50,15 +57,18 @@ body {
     display: block;
 }
 
+
 .reservation-info {
-    position: fixed;
-    left: 20px; /* 왼쪽 여백 조정 */
-    top: 50%; /* 페이지 위 아래 중앙으로 조정 */
+    position: absolute;
+    top: 50%;
+    left: 10px; /* 화면 왼쪽에 배치, 왼쪽 여백 조정 */
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* 좌측 정렬 */
     font-size: 18px;
+    max-width: 50%; /* 최대 너비를 50%로 설정 */
+    box-sizing: border-box; /* 너비에 패딩 및 테두리를 포함하도록 설정 */
 }
 
 /* 카운트다운 타이머 스타일 */
@@ -75,14 +85,15 @@ body {
 }
 
 .calendar {
-    max-width: 400px;
+    max-width: 50%; /* 최대 너비를 50%로 설정 */
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 50%; /* 화면 중앙에 배치 */
     transform: translate(-50%, -50%);
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 5px solid white;
     border-radius: 5px;
+    box-sizing: border-box; /* 너비에 패딩 및 테두리를 포함하도록 설정 */
 }
 
 .calendar-header {
@@ -130,27 +141,28 @@ body {
 .calendar-day {
     padding: 10px;
     background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    border: 3px solid white;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .calendar-day.reserved {
-    background-color: #ffcccc;
+    background-color: #00FF7F;
     font-weight: bold;
-    color: #f00;
+    color: black;
     pointer-events: none; /*클릭 이벤트 비활성*/
 }
 
 #timeTableContainer {
-    max-width: 400px;
+    max-width: 50%; /* 최대 너비를 50%로 설정 */
     position: absolute;
     top: 50%;
-    left: calc(100% - 400px); /* 달력의 오른쪽에 배치하려면 left 값을 조정하세요 */
-    transform: translate(-50%, -50%);
+    right: 10px; /* 화면 오른쪽에 배치, 오른쪽 여백 조정 */
+    transform: translateY(-50%);
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 5px solid white;
     border-radius: 5px;
+    box-sizing: border-box; /* 너비에 패딩 및 테두리를 포함하도록 설정 */
 }
 
 #timeTable {
