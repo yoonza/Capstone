@@ -101,7 +101,7 @@ function updateSelectedDate(date) {
 
     // 시간대 목록 추가 (예: 9:00 AM부터 2:00 PM까지)
     const startTime = 9;
-    const endTime = 14;
+    const endTime = 14; // 14시로 바꾸기 다시
 
     // 테이블 헤더 생성
     const headerRow = document.createElement('tr');
@@ -138,13 +138,15 @@ function timeTableMaker(selectedDate) {
         document.body.appendChild(timeTableContainer);
     }
 
-    const currentTime = new Date().getHours(); // 현재 시간 가져오기
+    const currentTime = new Date(); // 현재 시간 가져오기
+    const currentHour = currentTime.getHours(); // 현재 시간의 시간 부분 가져오기
+    const currentMinute = currentTime.getMinutes(); // 현재 시간의 분 부분 가져오기
 
     const startTime = 9;
     const endTime = 14;
 
     // 현재 시간이 예약 가능한 범위를 벗어나면 예약 불가로 설정
-    if (currentTime < startTime || currentTime >= endTime) {
+    if (currentHour < startTime || currentHour >= endTime) {
         const timeNotAvailableMessage = document.createElement('p');
         timeNotAvailableMessage.textContent = '현재 예약이 불가능한 시간입니다. 내일 예약을 부탁드립니다!';
         timeTableContainer.appendChild(timeNotAvailableMessage);
@@ -173,19 +175,30 @@ function timeTableMaker(selectedDate) {
 
         const timeSelectionCell = document.createElement('td');
         timeSelectionCell.classList.add('time-selection-box');
-        timeSelectionCell.textContent = '예약 가능';
-        timeSelectionCell.addEventListener('mousedown', () => {
-            // 드래그 시작 시간 설정
-            startSelection(hour);
-        });
-        timeSelectionCell.addEventListener('mouseup', () => {
-            // 드래그 종료 시간 설정
-            endSelection(hour);
-        });
-        timeSelectionCell.addEventListener('mousemove', (event) => {
-            // 드래그 이벤트 처리
-            handleDragEvent(event, hour);
-        });
+        
+        // 현재 시간을 지났는지 확인하고 드래그를 막음
+        if (currentHour > hour || (currentHour === hour && currentMinute > 0)) {
+            timeSelectionCell.textContent = '예약 불가';
+            timeSelectionCell.classList.add('not-available');
+            timeSelectionCell.addEventListener('mousedown', (event) => {
+                event.preventDefault(); // 드래그 방지
+            });
+        } else {
+            timeSelectionCell.textContent = '예약 가능';
+            timeSelectionCell.addEventListener('mousedown', () => {
+                // 드래그 시작 시간 설정
+                startSelection(hour);
+            });
+            timeSelectionCell.addEventListener('mouseup', () => {
+                // 드래그 종료 시간 설정
+                endSelection(hour);
+            });
+            timeSelectionCell.addEventListener('mousemove', (event) => {
+                // 드래그 이벤트 처리
+                handleDragEvent(event, hour);
+            });
+        }
+
         row.appendChild(timeSelectionCell);
 
         tbody.appendChild(row);
