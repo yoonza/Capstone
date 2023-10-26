@@ -101,7 +101,7 @@ function updateSelectedDate(date) {
 
     // 시간대 목록 추가 (예: 9:00 AM부터 2:00 PM까지)
     const startTime = 9;
-    const endTime = 14; // 14시로 바꾸기 다시
+    const endTime = 24; // 14시로 바꾸기 다시
 
     // 테이블 헤더 생성
     const headerRow = document.createElement('tr');
@@ -143,7 +143,7 @@ function timeTableMaker(selectedDate) {
     const currentMinute = currentTime.getMinutes(); // 현재 시간의 분 부분 가져오기
 
     const startTime = 9;
-    const endTime = 14;
+    const endTime = 24;
 
     // 현재 시간이 예약 가능한 범위를 벗어나면 예약 불가로 설정
     if (currentHour < startTime || currentHour >= endTime) {

@@ -1,7 +1,7 @@
 <?php
     session_start();
     header('Content-Type: text/html; charset = utf-8');
-	$conn = mysqli_connect("localhost", "root", "", "gande_member");
+	$conn = mysqli_connect("localhost", "root", "Forestz01!!", "gande_member");
 
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
@@ -26,8 +26,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예약 정보</title>
-    <script
-    src="http://kit.fontawesome.com/e1a4d00b81.js" crssorigin="anonymous">
+    <script src="http://kit.fontawesome.com/e1a4d00b81.js" crssorigin="anonymous">
     </script>
     <style>
         * {margin: 0 auto;}
@@ -64,7 +63,7 @@
 				    // 로그인 상태
 				    if (isset($_SESSION['username'])) {
     				    $username = $_SESSION['username'];
-					    $sql = "SELECT name FROM gande_member WHERE username = '{$username}'";
+					    $sql = "SELECT name FROM members WHERE username = '{$username}'";
         			    $result = mysqli_query($conn, $sql);
         			    $row = mysqli_fetch_array($result);
         			    $name = $row['name'];
@@ -75,7 +74,7 @@
                         }
 				    } else {
     				    $username = $_COOKIE['username'];
-					    $sql = "SELECT name FROM gande_member WHERE username = '{$username}'";
+					    $sql = "SELECT name FROM members WHERE username = '{$username}'";
         			    $result = mysqli_query($conn, $sql);
         			    $row = mysqli_fetch_array($result);
         			    $name = $row['name'];
@@ -97,7 +96,7 @@
         <div class = "find">
             <form method = "post" action = "gande_member_update.php">
                 <?php
-                    $sql = "SELECT * FROM gande_member WHERE username = '{$_SESSION['username']}'";
+                    $sql = "SELECT * FROM members WHERE username = '{$_SESSION['username']}'";
                     $result = mysqli_query($conn, $sql);
                     $gande_member = mysqli_fetch_array($result);
                     if (!$gande_member) { // 회원 정보가 없는 경우
