@@ -1,23 +1,26 @@
 <?php
     session_start();
     header('Content-Type: text/html; charset = utf-8');
-	$conn = mysqli_connect("localhost", "root", "Forestz01!!", "gande_member");
 
-	if (!$conn) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
+    $selectedSeatNumbers = "좌석이 선택되지 않았습니다."; // 변수 초기화
+
+    $conn = mysqli_connect("localhost", "root", "", "gande_member");
+
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
     if (isset($_SESSION['username'])) {
-    // 로그인 처리 후, 쿠키에 로그인 정보 저장
-	$is_login = false;
-	if ($is_login) {
-		$is_login = true;
-    	setcookie('username', $username, time() + 3600, '/');
-    	session_start();
-    	$_SESSION['username'] = $username;
-	}
+        $is_login = false;
+        if ($is_login) {
+            $is_login = true;
+            setcookie('username', $username, time() + 3600, '/');
+            session_start();
+            $_SESSION['username'] = $username;
+        }
 
-    $selectedTimeInfo = isset($_GET['selectedTime']) ? $_GET['selectedTime'] : '';
-    $currentDate = isset($_GET['currentDate']) ? $_GET['currentDate'] : '';
+        $selectedTimeInfo = isset($_GET['selectedTime']) ? $_GET['selectedTime'] : '';
+        $currentDate = isset($_GET['currentDate']) ? $_GET['currentDate'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +29,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예약 정보</title>
-    <script src="http://kit.fontawesome.com/e1a4d00b81.js" crssorigin="anonymous">
+    <script
+        src="http://kit.fontawesome.com/e1a4d00b81.js" crssorigin="anonymous">
     </script>
     <style>
         * {margin: 0 auto;}
@@ -41,7 +45,8 @@
             margin-top: 280px;
             align-items: center;
         }
-        input[type = "reset"] {
+
+        input[type="submit"] {
             height: 35px;
             width: 180px;
             background-color: #3a3a3a;
@@ -51,7 +56,7 @@
             display: inline-block;
         }
     </style>
-    <link rel = stylesheet href = 'mypage.css' type = 'text/css' />
+    <link rel = stylesheet href = 'details.css' type = 'text/css' />
     <body>
         <div class="top">
             <a href="main.php">
@@ -63,7 +68,7 @@
 				    // 로그인 상태
 				    if (isset($_SESSION['username'])) {
     				    $username = $_SESSION['username'];
-					    $sql = "SELECT name FROM members WHERE username = '{$username}'";
+					    $sql = "SELECT name FROM gande_member WHERE username = '{$username}'";
         			    $result = mysqli_query($conn, $sql);
         			    $row = mysqli_fetch_array($result);
         			    $name = $row['name'];
@@ -74,7 +79,7 @@
                         }
 				    } else {
     				    $username = $_COOKIE['username'];
-					    $sql = "SELECT name FROM members WHERE username = '{$username}'";
+					    $sql = "SELECT name FROM gande_member WHERE username = '{$username}'";
         			    $result = mysqli_query($conn, $sql);
         			    $row = mysqli_fetch_array($result);
         			    $name = $row['name'];
@@ -94,9 +99,9 @@
             </span>
         </div>
         <div class = "find">
-            <form method = "post" action = "gande_member_update.php">
+            <form method = "post" action = "main.php">
                 <?php
-                    $sql = "SELECT * FROM members WHERE username = '{$_SESSION['username']}'";
+                    $sql = "SELECT * FROM gande_member WHERE username = '{$_SESSION['username']}'";
                     $result = mysqli_query($conn, $sql);
                     $gande_member = mysqli_fetch_array($result);
                     if (!$gande_member) { // 회원 정보가 없는 경우
@@ -106,6 +111,9 @@
 
                     $selectedTimeInfo = $_GET['selectedTime'];
                     $currentDate = $_GET['currentDate'];
+
+                    $selectedSeatInfo = isset($_POST['selectedSeats']) ? $_POST['selectedSeats'] : '';
+                    $selectedTablesInfo = isset($_POST['selectedTables']) ? $_POST['selectedTables'] : '';
                 ?>
                 <h1>예약 정보</h1>
                 <br><fieldset>
@@ -127,15 +135,26 @@
                             <td>오늘의 날짜</td>
                             <td><?php echo $currentDate; ?></td>
                         </tr>
+                        <tr>
+                            <td>카페 이름</td>
+                            <td><div class="cafe-container">
+                                <select id="cafe">
+                                    <option value>Starbucks</option>
+                                </select></td>
+                            </div></td>
+                        </tr>
                     </table>
                 </fieldset>
                 <br><br>
-                <input type="reset" value="시간 다시 선택하기" onclick="location.href='realtime.php';"/>
-                <input type = "submit" value = "예약하기" />
+                <div class = "text-center">
+                    <input type="reset" value="시간 다시 선택하기" onclick="location.href='realtime.php';"/>
+                    <input type = "submit" value = "예약하기" onclick="location.href='main.php';"/>
+                </div>
             </form>
         </div>
     </body>
 </html>
+
 <?php 
     } else { // 로그인 되어 있지 않은 경우
         echo "<script>alert('로그인 후 이용해주세요.'); location.href='login.php';</script>";
