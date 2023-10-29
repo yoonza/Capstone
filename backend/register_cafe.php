@@ -24,9 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        echo "카페가 성공적으로 등록되었습니다.";
+        echo '<script>alert("카페가 성공적으로 등록되었습니다.");</script>';
     } else {
-        echo "카페 등록 중 오류가 발생했습니다.";
+        echo '<script>alert("카페 등록 중 오류가 발생했습니다.");</script>';
     }
 }
 
