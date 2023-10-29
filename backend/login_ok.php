@@ -2,7 +2,7 @@
     session_start(); // 세션 시작
     $servername = "localhost"; // 데이터베이스 서버 이름
     $hostname = "root"; // 데이터베이스 사용자 이름
-    $password = ""; // 데이터베이스 사용자 비밀번호
+    $password = "Forestz01!!"; // 데이터베이스 사용자 비밀번호
     $dbname = "gande_member"; // 데이터베이스 이름
 
     // 데이터베이스 연결 생성
@@ -13,7 +13,7 @@
     $password = $_POST['password'];
 
     // SQL 쿼리문 작성
-    $sql = "SELECT * FROM gande_member WHERE username = '$username' AND password = '$password'";
+    $sql = "SELECT * FROM members WHERE username = '$username' AND password = '$password'";
 
     // SQL 쿼리문 실행
     $result = mysqli_query($conn, $sql);

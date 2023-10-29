@@ -2,7 +2,7 @@
 // MySQL 데이터베이스에 연결
 $servername = "localhost";
 $hostname = "root";
-$password = "";
+$password = "Forestz01!!";
 $dbname = "gande_member";
 
 $conn = mysqli_connect($servername, $hostname, $password, $dbname);
@@ -27,7 +27,7 @@ if (!empty($roles)) {
 }
 
 // MySQL에 데이터 삽입
-$sql = "INSERT INTO gande_member (name, phone, username, password, email, roles)
+$sql = "INSERT INTO members (name, phone, username, password, email, roles)
 VALUES ('$name', '$phone', '$username', '$password', '$email', '$roles_str')";
 
 if (mysqli_query($conn, $sql)) {

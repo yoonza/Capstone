@@ -7,7 +7,7 @@
 <html>
 <head>
 <mata charset = "utr-8" />
-<title>아이디 찾기</title>
+<title>계정 찾기</title>
 <style>
     * {margin: 0 auto;}
     a {
@@ -38,12 +38,13 @@
                             <tr>
                                 <td>이메일</td>
                                 <td><input type="text" name="email">@<select name="eadress"><option value="naver.com">naver.com</option>
-                                <option value="daum.net">daum.net</option><option value="gmail.com">gmail.com</option></select></td>
+                                <option value="daum.net">daum.net</option><option value="gmail.com">gmail.com</option>
+                                <option value="gande.com">gande.com</option></select></td>
                             </tr>
                         </table>
                 </fieldset>
             <br><input type="submit" value="아이디 찾기"/>
-            <br><br><input type="reset" value="메인 화면으로 이동" onclick="location.href='main.php';"/>
+            <br><br><input type="reset" value="메인 화면으로 이동" onclick="location.href='main.php'"/>
         </form>
     </div>
 </body>

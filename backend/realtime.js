@@ -101,12 +101,11 @@ function updateSelectedDate(date) {
 
     // 시간대 목록 추가 (예: 9:00 AM부터 2:00 PM까지)
     const startTime = 9;
-    const endTime = 14; // 14시로 바꾸기 다시
+    const endTime = 24; // 14시로 바꾸기 다시
 
     // 테이블 헤더 생성
     const headerRow = document.createElement('tr');
     const timeHeader = document.createElement('th');
-    timeHeader.textContent = '시간대';
     headerRow.appendChild(timeHeader);
     thead.appendChild(headerRow);
 
@@ -143,7 +142,7 @@ function timeTableMaker(selectedDate) {
     const currentMinute = currentTime.getMinutes(); // 현재 시간의 분 부분 가져오기
 
     const startTime = 9;
-    const endTime = 20;
+    const endTime = 24;
 
     // 현재 시간이 예약 가능한 범위를 벗어나면 예약 불가로 설정
     if (currentHour < startTime || currentHour >= endTime) {
@@ -166,9 +165,11 @@ function timeTableMaker(selectedDate) {
         if (hour >= 12) {
             // 12시 이상인 경우 PM으로 표시
             displayHour = `${hour}:00 PM`;
+            timeCell.style.fontWeight = 'bold'; // 텍스트 굵게 설정
         } else {
             // 12시 미만인 경우 AM으로 표시
             displayHour = `${hour}:00 AM`;
+            timeCell.style.fontWeight = 'bold';
         }
         timeCell.textContent = displayHour;
         row.appendChild(timeCell);
@@ -179,12 +180,15 @@ function timeTableMaker(selectedDate) {
         // 현재 시간을 지났는지 확인하고 드래그를 막음
         if (currentHour > hour || (currentHour === hour && currentMinute > 0)) {
             timeSelectionCell.textContent = '예약 불가';
+            timeSelectionCell.style.fontWeight = 'bold'; // 텍스트 굵게 설정
+            timeSelectionCell.style.color = 'gray'
             timeSelectionCell.classList.add('not-available');
             timeSelectionCell.addEventListener('mousedown', (event) => {
                 event.preventDefault(); // 드래그 방지
             });
         } else {
             timeSelectionCell.textContent = '예약 가능';
+            timeSelectionCell.style.fontWeight = 'bold';
             timeSelectionCell.addEventListener('mousedown', () => {
                 // 드래그 시작 시간 설정
                 startSelection(hour);
@@ -258,19 +262,10 @@ function highlightSelectedTime(startHour, endHour) {
 // 선택한 시간대를 저장하는 함수
 function storeSelectedTime(startHour, endHour) {
     // 선택한 시간대를 예약 정보에 추가하거나 다른 곳에 저장
-    const selectedTime = `${startHour}:00-${endHour + 1}:00`; // 예약 정보를 저장할 형식으로 시간대 변환
-    localStorage.setItem('selectedTime', selectedTime); // 브라우저 로컬 스토리지에 저장
-
     // 이후 예약 버튼을 누르면 해당 시간대를 서버로 전송하여 예약을 완료할 수 있도록 구현
-    const reservationButton = document.getElementById('reservation-button');
-    if (reservationButton) {
-        reservationButton.addEventListener('click', () => {
-            const selectedTimeInfo = localStorage.getItem('selectedTime');
-            const currentDate = new Date().toLocaleDateString();
-            window.location.href = `reservate_details.php?selectedTime=${selectedTimeInfo}&currentDate=${currentDate}`;
-        });
-    }
 }
+
+// 이전 코드는 그대로 유지
 
 // 전역 변수 추가
 let isDragging = false;
@@ -337,7 +332,6 @@ function saveSelectedTime(startHour, endHour) {
         clearSelectionStyles(); // 선택한 스타일 지우기
     }
 }
-
 // 선택한 시간대를 화면에 표시하는 함수
 function displaySelectedTimeMessage(startHour, endHour) {
     const timeTableContainer = document.getElementById('timeTableContainer');
@@ -349,28 +343,25 @@ function displaySelectedTimeMessage(startHour, endHour) {
         timeTableContainer.appendChild(messageElement);
     }
 
-    if (isValidTimeRange(startHour, endHour)) { // 예약 가능한 범위를 확인
-        if (!isTimeSelected) {
-            messageElement.textContent = `현재 선택된 시간은 ${startHour}시부터 ${endHour + 1}시 입니다.`;
-            isTimeSelected = true;
-            addReservationButton(); // 예약 정보 확인 버튼 추가
-        } else if (startHour !== startSelectionHour || endHour !== endSelectionHour) {
-            messageElement.textContent = `현재 선택된 시간은 ${startHour}시부터 ${endHour + 1}시 입니다.`;
-            startSelectionHour = startHour;
-            endSelectionHour = endHour;
-            removeReservationButton(); // 예약 정보 확인 버튼 제거
-            addReservationButton(); // 변경된 시간에 맞게 예약 정보 확인 버튼 다시 추가
-        } else {
-            // 이미 선택한 시간이 있는 경우에는 알림을 띄우고 선택을 취소하도록 함
-            const confirmation = confirm(
-                `이미 선택한 시간대가 있습니다. 선택을 취소하고 ${startHour}시부터 ${endHour + 1}시까지 선택하시겠습니까?`
-            );
-            if (confirmation) {
-                clearSelection(); // 선택을 취소하고 다른 시간대 선택
-            }
-        }
+    if (!isTimeSelected) {
+        messageElement.textContent = `현재 선택된 시간은 ${startHour}시부터 ${endHour + 1}시 입니다.`;
+        messageElement.style.marginTop = '20px'; // 위 여백을 조절할 수 있습니다.
+        isTimeSelected = true;
+        addReservationButton(); // 예약 정보 확인 버튼 추가
+    } else if (startHour !== startSelectionHour || endHour !== endSelectionHour) {
+        messageElement.textContent = `현재 선택된 시간은 ${startHour}시부터 ${endHour + 1}시 입니다.`;
+        startSelectionHour = startHour;
+        endSelectionHour = endHour;
+        removeReservationButton(); // 예약 정보 확인 버튼 제거
+        addReservationButton(); // 변경된 시간에 맞게 예약 정보 확인 버튼 다시 추가
     } else {
-        clearSelectionStyles(); // 선택한 스타일 지우기
+        // 이미 선택한 시간이 있는 경우에는 알림을 띄우고 선택을 취소하도록 함
+        const confirmation = confirm(
+            `이미 선택한 시간대가 있습니다. 선택을 취소하고 ${startHour}시부터 ${endHour + 1}시까지 선택하시겠습니까?`
+        );
+        if (confirmation) {
+            clearSelection(); // 선택을 취소하고 다른 시간대 선택
+        }
     }
 
     // 페이지에 메시지를 나타내도록 요소를 추가
@@ -404,11 +395,18 @@ function addReservationButton() {
     if (!document.getElementById('reservation-button')) {
         const reservationButton = document.createElement('button');
         reservationButton.id = 'reservation-button';
-        reservationButton.textContent = '예약 정보 확인';
+        reservationButton.textContent = '예약 확인';
         reservationButton.addEventListener('click', () => {
             checkReservationInfo();
         });
         buttonContainer.appendChild(reservationButton);
+
+        // 예약 정보 확인 버튼을 테이블 아래로 이동
+        const timeTableContainer = document.getElementById('timeTableContainer');
+        timeTableContainer.appendChild(buttonContainer);
+
+        // 버튼 가로폭 조절
+        reservationButton.style.width = '100px'; // 예시로 200px로 설정
     }
 }
 
@@ -421,35 +419,17 @@ function removeReservationButton() {
     }
 }
 
-// Set 객체를 전역으로 선언하여 중복된 시간대를 제거
-const selectedTimeSet = new Set();
-
 // 예약 정보 확인 버튼을 클릭했을 때의 동작을 처리하는 함수
 function checkReservationInfo() {
-    // 중복된 항목이 없는지 확인하고 Set에 추가
-    selectedTimeSet.clear(); // 기존에 선택된 시간대 초기화
-
-    selectedTimeSlots.forEach(slot => {
-        const timeSlotString = `${slot.start}:00-${slot.end + 1}:00`;
-        selectedTimeSet.add(timeSlotString);
-    });
-
-    // Set을 배열로 변환하여 선택한 시간대 정보를 얻음
-    const selectedTimeInfo = Array.from(selectedTimeSet).join(',');
-
+    // 선택한 시간대 정보
+    const selectedTimeInfo = selectedTimeSlots.map(slot => `${slot.start}:00-${slot.end + 1}:00`).join(',');
+    
     // 오늘의 날짜 정보
     const now = new Date();
     const currentDate = now.toLocaleDateString();
 
-    // seat.js에서 선택한 좌석 정보를 가져와서 화면에 나타냄
-    const selectedSeatsString = localStorage.getItem('selectedSeatsString');
-    const selectedSeatsElement = document.getElementById('selectedSeatsElement');
-    if (selectedSeatsElement) {
-        selectedSeatsElement.textContent = `Selected Seats: ${selectedSeatsString}`;
-    }
-
-    // GET 요청에 선택한 시간대, 날짜, 좌석 정보를 추가하여 reservate_details.php 페이지로 이동
-    window.location.href = `reservate_details.php?selectedTime=${selectedTimeInfo}&currentDate=${currentDate}&selectedSeats=${selectedSeatsString}`;
+    // GET 요청에 선택한 시간대와 날짜를 추가하여 reservate_details.php 페이지로 이동
+    window.location.href = `reservate_details.php?selectedTime=${selectedTimeInfo}&currentDate=${currentDate}`;
 }
 
 // 드래그 시작 및 종료 이벤트 처리

@@ -6,8 +6,8 @@ if($_POST["name"] == "" || $_POST["email"] == ""){
 	$name = $_POST['name'];
 	$email = $_POST['email'].'@'.$_POST['eadress'];
 
-$conn = mysqli_connect("localhost", "root", "", "gande_member");
-$sql = "SELECT * FROM gande_member WHERE name = '{$name}' && email = '{$email}'";
+$conn = mysqli_connect("localhost", "root", "Forestz01!!", "gande_member");
+$sql = "SELECT * FROM members WHERE name = '{$name}' && email = '{$email}'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
 

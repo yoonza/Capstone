@@ -1,29 +1,30 @@
 <?php
-	session_start();
+	 session_start();
 
-	$conn = mysqli_connect("localhost", "root", "", "gande_member");
+	 $conn = mysqli_connect("localhost", "root", "Forestz01!!", "gande_member");
+	 if (!$conn) {
+	 	die("Connection failed: " . mysqli_connect_error());
+	 }
 
-	if (!$conn) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
-
-	// 로그인 처리 후, 쿠키에 로그인 정보 저장
-	$is_login = false;
-	if ($is_login) {
-		$is_login = true;
+	 // 로그인 처리 후, 쿠키에 로그인 정보 저장
+	 $is_login = false;
+	 if ($is_login) {
+	 	$is_login = true;
     	setcookie('username', $username, time() + 3600, '/');
-    	session_start();
-    	$_SESSION['username'] = $username;
+     	session_start();
+     	$_SESSION['username'] = $username;
 	}
 
-?>
+?> 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>GANDE</title>
+	<link rel="icon" href="/Users/yoonza/Desktop/Capstone/backend/mainfa.png" type="image/x-icon">  <!-- 지도맵 파비콘 생성 -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<link rel = stylesheet href = 'main.css' type = 'text/css' />
+	<script src="http://kit.fontawesome.com/e1a4d00b81.js" crossorigin="anonymous"></script>
 	<style>
 		* {margin:0;padding:0;}
 		.section input[id*="slide"] {display:none;}
@@ -100,42 +101,42 @@
     				// 로그인 상태
     				if (isset($_SESSION['username'])) {
         				$username = $_SESSION['username'];
-						$sql = "SELECT name FROM gande_member WHERE username = '{$username}'";
+						$sql = "SELECT name FROM members WHERE username = '{$username}'";
             			$result = mysqli_query($conn, $sql);
             			$row = mysqli_fetch_array($result);
             			$name = $row['name'];
-						echo "<li><a href='mypage.php'>{$name}님 환영합니다!</a></li>";
+						echo "<li><strong><a href='mypage.php'>{$name}님 환영합니다!</a></strong></li>";
     				} else {
         				$username = $_COOKIE['username'];
-						$sql = "SELECT name FROM gande_member WHERE username = '{$username}'";
+						$sql = "SELECT name FROM members WHERE username = '{$username}'";
             			$result = mysqli_query($conn, $sql);
             			$row = mysqli_fetch_array($result);
             			$name = $row['name'];
-            			echo "<li><a href='mypage.php'>{$name}님 환영합니다!</a></li>";
+            			echo "<li><strong><a href='mypage.php'>{$name}님 환영합니다!</a></strong></li>";
     				}
     				// 로그아웃 버튼 표시
-    				echo '<li><a href="logout.php">로그아웃</a></li>';
+    				echo '<li><strong><a href="logout.php">로그아웃</a></strong></li>';
 
 					// echo '<li><a href="mypage.php">마이페이지</a></li>';
 					} else {
     				// 로그아웃 상태
     				// 로그인 버튼 표시
-    				echo '<li><a href="login.php">로그인</a></li>';
+    				echo '<li><strong><a href="login.php">로그인</a></strong></li>';
 					}
-				?>
-                <li><a href="gande_member.php">회원가입</a></li>
-				<li><a href="contact.php">고객센터</a><li>
+				?> 
+                &nbsp;&nbsp;<li><strong><a href="gande_member.php">회원가입</a></strong></li>&nbsp;&nbsp;&nbsp;
+				<li><strong><a href="contact.php">고객센터</a></strong><li>
+				<li><strong><a href="manager.php">관리자페이지</a></strong><li>
             </ul>
         </div>
 		
     </header>
 	<nav>
 		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="menu.php">CAFE</a></li>
-			<li><a href="category_select.php">CATEGORY</a></li>
-			<li><a href="location.php">POSITION</a></li>
-			<li><a href="#">RESERVATION</a></li>
+			<li><a href="main.php">Home</a></li>
+			<li><a href="cafelist.php">CAFE</a></li>
+			<li><a href="map.php">POSITION</a></li>
+			<li><a href="reservation.php">RESERVATION</a></li>
 		</ul>
 	</nav>
 	<div class="section">
@@ -148,10 +149,8 @@
 			<li class="slideitem">
 				<a>
 					<div class="textbox">
-						<h3>첫번째 슬라이드</h3>
-						<p>첫번째 슬라이드 입니다.</p>
+					<h3>Welcome cafe recommendation Gande !</h3> 
 					</div>
-					<img src="간디 로고.png">
 				</a>
 			</li>
 			<li class="slideitem">
@@ -169,7 +168,6 @@
 						<h3>세번째 슬라이드</h3>
 						<p>세번째 슬라이드 입니다.</p>
 					</div>
-					<img src="간디 로고.png">
 				</a>
 			</li class="slideitem">
 
@@ -202,7 +200,7 @@
     <li>
         <div>
             <div class="contents1">등록된 카페 수</div>
-            <div class="result">1000+</div>
+            <div class="result">106,533</div>
         </div>
     </li>
     <li>
@@ -211,7 +209,7 @@
             <div class="result" id = "user_count"><?php include 'user_count.php'; ?></div>
         </div>
 		<script>
-		$(document).ready(function() {
+		/*$(document).ready(function() {
     		setInterval(function() {
         		$.ajax({
             		type: 'GET',
@@ -221,13 +219,13 @@
             		}
         		});
     		}, 5000);
-		});
+		});*/
 		</script>
     </li>
     <li>
         <div>
-            <div class="contents1">예약가능한 카페 수</div>
-            <div class="result">100,000+</div>
+            <div class="contents1">카페 예약 목록</div>
+			<a href="view_reservations.php" class="button">예약 확인하기</a>
         </div>
     </li>
     <li>

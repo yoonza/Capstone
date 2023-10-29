@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <title>간디 로그인</title>
+    <script src="http://kit.fontawesome.com/e1a4d00b81.js" crossorigin="anonymous"></script>
     <script>
         function checkCapsLock(event) {
             var capsLockOn = event.getModifierState && event.getModifierState('CapsLock');

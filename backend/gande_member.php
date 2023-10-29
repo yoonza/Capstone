@@ -27,32 +27,33 @@
                     <table>
                         <tr>
                             <td>이름</td>
-                            <td><input type="text" size="20" name="name" placeholder="이름"></td>
+                            <td><input type="text" size="20" name="name" placeholder="이름" required></td>
                         </tr>
                         <tr>
                             <td>전화번호</td>
-                            <td><input type="text" size="20" name="phone" placeholder="전화번호"></td>
+                            <td><input type="text" size="20" name="phone" placeholder="전화번호" required></td>
                         </tr>
                         <tr>
                             <td>아이디</td>
-                            <td><input type="text" size="20" name="username" id = "uname" placeholder="아이디">
+                            <td><input type="text" size="20" name="username" id = "uname" placeholder="아이디" required>
                             <input type = "button" value = "중복검사" onclick = "checkusername();" />
                             <input type = "hidden" value = "0" name = "chs" /></td>
                         </tr>
                         <tr>
                             <td>비밀번호</td>
-                            <td><input type="password" size="20" name="password" minlength="8" maxlength = "20" placeholder="비밀번호">
+                            <td><input type="password" size="20" name="password" minlength="8" maxlength = "20" placeholder="비밀번호" required>
                             <p>※ 비밀번호는 <span class="num">문자, 숫자, 특수문자(~!@#$%^&*)의 조합 8자리 이상 20자리 이하</span>로 입력이 가능합니다.</p></td>
                         </tr>
                         <tr>
                             <td>이메일</td>
-                            <td><input type="text" size = "20" name="email">@<select name="eadress"><option value="naver.com">naver.com</option><option value="gmail.com">gmail.com</option><option value="daum.net">daum.net</option></select></td>
+                            <td><input type="text" size = "20" name="email" required>@<select name="eadress"><option value="naver.com">naver.com</option><option value="gmail.com">gmail.com</option><option value="daum.net">daum.net</option><option value="naver.com">gande.com</option></select></td>
                         </tr>
                         <tr>
                             <td>회원 유형</td>
                             <td>
                                 <input type="checkbox" name="role[]" value="customer"> 카페 고객
                                 <input type="checkbox" name="role[]" value="owner"> 카페 사장님
+                                <input type="checkbox" name="role[]" value="admin"> 관리자
                             </td>
                         </tr>
                     </table>
