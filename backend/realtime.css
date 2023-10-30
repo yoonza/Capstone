@@ -90,7 +90,7 @@ body {
     top: 50%;
     left: 50%; /* 화면 중앙에 배치 */
     transform: translate(-50%, -50%);
-    padding: 20px;
+    padding: 25px;
     border: 5px solid white;
     border-radius: 5px;
     box-sizing: border-box; /* 너비에 패딩 및 테두리를 포함하도록 설정 */
@@ -233,4 +233,13 @@ body {
 
 #button-container button:hover {
     background-color: white;
+}
+
+.selected-seats {
+    margin-top: 4%;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    color: #ddd;
+    font-size: 23px;
 }

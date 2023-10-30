@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #B7f0b1;
+  background-color: #8fbc8f;
   color: black;
   font-weight: bold;
   display: flex;
@@ -80,6 +80,7 @@ body {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+  margin-top: 30px;
 }
 
 .container {
@@ -96,18 +97,18 @@ body {
 
 .seat {
   background-color: #DEB887;
-  height: 12px;
+  height: 14px;
   width: 15px;
   margin: 3px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  text-align: center;
+  font-size: 12px;
 }
 
 .table {
     background-color: #DEB887; /* 테이블 배경색 */
-    border-radius: 5px; /* 테이블 모양을 둥글게 만듦 */
-    width: 25px; /* 테이블 너비 */
-    height: 20px; /* 테이블 높이 */
+/* 테이블 모양을 둥글게 만듦 */
+    width: 22px; /* 테이블 너비 */
+    height: 17px; /* 테이블 높이 */
     margin: 5px; /* 간격 설정 */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* 그림자 효과 추가 */
   }
@@ -148,8 +149,8 @@ body {
 
 .showcase {
   background-color: rgba(0, 0, 0, 0.1);
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 0.01px 0.5px;
+  border-radius: 3px;
   color: #777;
   list-style-type: none;
   display: flex;
@@ -198,15 +199,21 @@ body {
 p.text span {
   color: darkgreen;
   font-weight: bolder;
+  text-align: center;
 }
 
 a.rm-button-open {
 	color: black;
 	font-size: 20px;
+  text-align: center;
 	line-height: 45px;
 	margin: 10px auto;
   align-items: center;
   text-decoration: none;
 	display: block;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+}
+
+a.rm-button-open:hover {
+  color: white;
 }

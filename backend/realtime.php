@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	$conn = mysqli_connect("localhost", "root", "", "gande_member");
+	$conn = mysqli_connect("localhost", "root", "Forestz01!!", "gande_member");
 
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
@@ -44,7 +44,7 @@
 				// 로그인 상태
 				if (isset($_SESSION['username'])) {
     				$username = $_SESSION['username'];
-					$sql = "SELECT name FROM gande_member WHERE username = '{$username}'";
+					$sql = "SELECT name FROM members WHERE username = '{$username}'";
         			$result = mysqli_query($conn, $sql);
         			$row = mysqli_fetch_array($result);
         			$name = $row['name'];
@@ -55,7 +55,7 @@
                     }
 				} else {
     				$username = $_COOKIE['username'];
-					$sql = "SELECT name FROM gande_member WHERE username = '{$username}'";
+					$sql = "SELECT name FROM members WHERE username = '{$username}'";
         			$result = mysqli_query($conn, $sql);
         			$row = mysqli_fetch_array($result);
         			$name = $row['name'];
@@ -81,15 +81,14 @@
 
     <!-- 선택된 좌석 정보 출력 -->
     <div class='selected-seats'>
-        <h3>선택된 좌석:</h3>
         <ul>
             <?php
                 if (!empty($selectedSeats)) {
-                    foreach ($selectedSeats as $seat) {
-                        echo "<li>{$seat}</li>";
-                    }
+                    
+                    echo '<p>선택된 좌석: ' . implode(' ', $selectedSeats) . '</p>';
+                    
                 } else {
-                    echo "<li>선택된 좌석이 없습니다.</li>";
+                    echo "<p>선택된 좌석이 없습니다.</p>";
                 }
             ?>
         </ul>

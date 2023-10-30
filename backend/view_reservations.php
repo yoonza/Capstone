@@ -32,11 +32,13 @@ if (isset($_SESSION['username'])) {
         echo "</table>";
     } else {
         // 예약 정보가 없는 경우
-        echo "<h1>예약 정보가 없습니다.</h1>";
+        echo '<script>alert("예약 정보가 없습니다.")</script>';
+        echo '<script>window.location.href = "main.php";</script>'; 
     }
 } else {
     // 로그인 되어 있지 않은 경우
-    echo "<h1>로그인 후 이용해주세요.</h1>";
+    echo '<script>alert("로그인 후 이용해주세요.")</script>';
+    echo '<script>window.location.href = "main.php";</script>'; 
 }
 
 ?>
