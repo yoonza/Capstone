@@ -42,6 +42,12 @@
 		.section input[id="slide01"]:checked ~ .slidewrap .slidelist > li {transform:translateX(0%);}
 		.section input[id="slide02"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-100%);}
 		.section input[id="slide03"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-200%);}
+		.section input[id="slide04"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-300%);}
+		.section input[id="slide05"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-400%);}
+		.section input[id="slide06"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-500%);}
+		.section input[id="slide07"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-600%);}
+		.section input[id="slide08"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-700%);}
+		.section input[id="slide09"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-800%);}
 
 		/* input에 체크되면 텍스트 효과 */
 		.section input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) .textbox h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
@@ -58,14 +64,26 @@
 		.section input[id="slide01"]:checked ~ .slidewrap .slide-control > div:nth-child(1) {display:block;}
 		.section input[id="slide02"]:checked ~ .slidewrap .slide-control > div:nth-child(2) {display:block;}
 		.section input[id="slide03"]:checked ~ .slidewrap .slide-control > div:nth-child(3) {display:block;}
+		.section input[id="slide04"]:checked ~ .slidewrap .slide-control > div:nth-child(4) {display:block;}
+		.section input[id="slide05"]:checked ~ .slidewrap .slide-control > div:nth-child(5) {display:block;}
+		.section input[id="slide06"]:checked ~ .slidewrap .slide-control > div:nth-child(6) {display:block;}
+		.section input[id="slide07"]:checked ~ .slidewrap .slide-control > div:nth-child(7) {display:block;}
+		.section input[id="slide08"]:checked ~ .slidewrap .slide-control > div:nth-child(8) {display:block;}
+		.section input[id="slide09"]:checked ~ .slidewrap .slide-control > div:nth-child(9) {display:block;}
 
 		/* 페이징 */
 		.slide-pagelist {text-align:center;padding:20px;}
 		.slide-pagelist > li {display:inline-block;vertical-align:middle;}
-		.slide-pagelist > li > label {display:block;padding:8px 30px;border-radius:30px;background:#ccc;margin:20px 10px;cursor:pointer;}
+		.slide-pagelist > li > label {display:block;padding:8px 15px;border-radius:30px;background:white;margin:15px 10px;cursor:pointer;}
 		.section input[id="slide01"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(1) > label {background:#999;}
 		.section input[id="slide02"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(2) > label {background:#999;}
 		.section input[id="slide03"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(3) > label {background:#999;}
+		.section input[id="slide04"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(4) > label {background:#999;}
+		.section input[id="slide05"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(5) > label {background:#999;}
+		.section input[id="slide06"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(6) > label {background:#999;}
+		.section input[id="slide07"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(7) > label {background:#999;}
+		.section input[id="slide08"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(8) > label {background:#999;}
+		.section input[id="slide09"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(9) > label {background:#999;}
 	
 		.amount{
     		position: relative;
@@ -89,12 +107,21 @@
   		.amount > li:not(:last-child) > div{
     		border-right:1px solid #E1E1E1;
   		}
+		.button {
+			color: gray; /* 버튼 텍스트의 기본 색상 */
+			font-weight: bold;
+			text-decoration: none; /* 텍스트 밑줄 제거 */
+		}
+
+		.button:hover {
+			color: red; /* 버튼에 마우스 호버 시 텍스트 색상을 빨간색으로 변경 */
+		}	
 	</style>
 </head>
 <body>
     <header>
         <div class="header-container">
-            <h1>GANDE</h1>
+            <h1>&nbsp;&nbsp;GANDE</h1>
             <ul class="nav-menu">
 				<?php
 					if (isset($_SESSION['username']) || isset($_COOKIE['username'])) {
@@ -140,67 +167,125 @@
 		</ul>
 	</nav>
 	<div class="section">
-	<input type="radio" name="slide" id="slide01" checked>
-	<input type="radio" name="slide" id="slide02">
-	<input type="radio" name="slide" id="slide03">
-	<div class="slidewrap">
-		<ul class="slidelist">
-			<!-- 슬라이드 영역 -->
-			<li class="slideitem">
-				<a>
-					<div class="textbox">
-					<h3>Welcome cafe recommendation Gande !</h3> 
-					</div>
-				</a>
-			</li>
-			<li class="slideitem">
-				<a>
-					<div class="textbox">
-						<h3>두번째 슬라이드</h3>
-						<p>두번째 슬라이드 입니다.</p>
-					</div>
-					<img src="간디 로고.png">
-				</a>
-			</li>
-			<li class="slideitem">
-				<a>	
-					<div class="textbox">
-						<h3>세번째 슬라이드</h3>
-						<p>세번째 슬라이드 입니다.</p>
-					</div>
-				</a>
-			</li class="slideitem">
-
-			<!-- 좌,우 슬라이드 버튼 -->
-			<div class="slide-control">
-				<div>
-					<label for="slide03" class="left"></label>
-					<label for="slide02" class="right"></label>
-				</div>
-				<div>
-					<label for="slide01" class="left"></label>
-					<label for="slide03" class="right"></label>
-				</div>
-				<div>
-					<label for="slide02" class="left"></label>
-					<label for="slide01" class="right"></label>
-				</div>
+    <input type="radio" name="slide" id="slide01" checked>
+    <input type="radio" name="slide" id="slide02">
+    <input type="radio" name="slide" id="slide03">
+    <input type="radio" name="slide" id="slide04">
+    <input type="radio" name="slide" id="slide05">
+    <input type="radio" name="slide" id="slide06">
+    <input type="radio" name="slide" id="slide07">
+    <input type="radio" name="slide" id="slide08">
+    <input type="radio" name="slide" id="slide09">
+    <div class="slidewrap">
+        <ul class="slidelist">
+            <!-- 슬라이드 영역 -->
+            <li class="slideitem">
+                <a>
+                    <img src="/assets/1-3.jpg" alt="Slide 1 Image" style="width: 82%; height: auto; margin-left: 9%">
+                </a>
+            </li>
+            <li class="slideitem">
+                <a>
+                    <img src="/assets/2-1.jpg" alt="Slide 2 Image" style="width: 82%; height: auto; margin-left: 9%">
+                </a>
+            </li>
+            <li class="slideitem">
+                <a>
+                    <img src="/assets/3-1.jpg" alt="Slide 3 Image" style="width: 82%; height: auto; margin-left: 9%">
+                </a>
+            </li>
+            <li class="slideitem">
+                <a>
+                    <img src="/assets/4-1.jpg" alt="Slide 4 Image" style="width: 82%; height: auto; margin-left: 9%">
+                </a>
+            </li>
+            <li class="slideitem">
+                <a>
+                    <img src="/assets/5-1.jpg" alt="Slide 5 Image" style="width: 82%; height: auto; margin-left: 9%">
+                </a>
+            </li>
+            <li class="slideitem">
+                <a>
+                    <img src="/assets/6-1.jpg" alt="Slide 6 Image" style="width: 82%; height: auto; margin-left: 9%">
+                </a>
+            </li>
+            <li class="slideitem">
+                <a>
+                    <img src="/assets/7-1.jpg" alt="Slide 7 Image" style="width: 82%; height: auto; margin-left: 9%">
+                </a>
+            </li>
+            <li class="slideitem">
+                <a>
+                    <img src="/assets/8-1.jpg" alt="Slide 8 Image" style="width: 82%; height: auto; margin-left: 9%">
+                </a>
+            </li>
+            <li class="slideitem">
+                <a>
+                    <img src="/assets/9-1.jpg" alt="Slide 9 Image" style="width: 82%; height: auto; margin-left: 9%">
+                </a>
+            </li>
+							<!-- 좌,우 슬라이드 버튼 -->
+		<div class="slide-control">
+			<div>
+				<label for="slide01" class="left"></label>
+				<label for="slide02" class="right"></label>
 			</div>
+			<div>
+				<label for="slide02" class="left"></label>
+				<label for="slide03" class="right"></label>
+			</div>
+			<div>
+				<label for="slide03" class="left"></label>
+				<label for="slide04" class="right"></label>
+			</div>
+			<div>
+				<label for="slide04" class="left"></label>
+				<label for="slide05" class="right"></label>
+			</div>
+			<div>
+				<label for="slide05" class="left"></label>
+				<label for="slide06" class="right"></label>
+			</div>
+			<div>
+				<label for="slide06" class="left"></label>
+				<label for="slide07" class="right"></label>
+			</div>
+			<div>
+				<label for="slide07" class="left"></label>
+				<label for="slide08" class="right"></label>
+			</div>
+			<div>
+				<label for="slide08" class="left"></label>
+				<label for="slide09" class="right"></label>
+			</div>
+			<div>
+				<label for="slide09" class="left"></label>
+				<label for="slide01" class="right"></label>
+			</div>
+		</div>
 
-		</ul>
-		<!-- 페이징 -->
-		<ul class="slide-pagelist">
-			<li><label for="slide01"></label></li>
-			<li><label for="slide02"></label></li>
-			<li><label for="slide03"></label></li>
-		</ul>
-	</div>
+
+        </ul>
+        <!-- 페이징 -->
+        <ul class="slide-pagelist">
+            <li><label for="slide01"></label></li>
+            <li><label for="slide02"></label></li>
+            <li><label for="slide03"></label></li>
+            <li><label for="slide04"></label></li>
+            <li><label for="slide05"></label></li>
+            <li><label for="slide06"></label></li>
+            <li><label for="slide07"></label></li>
+            <li><label for="slide08"></label></li>
+            <li><label for="slide09"></label></li>
+        </ul>
+    </div>
 </div>
+
 <ul class="amount">
     <li>
         <div>
             <div class="contents1">등록된 카페 수</div>
-            <div class="result">106,533</div>
+            <div class="result">107,957</div>
         </div>
     </li>
     <li>
@@ -225,13 +310,13 @@
     <li>
         <div>
             <div class="contents1">카페 예약 목록</div>
-			<a href="view_reservations.php" class="button">예약 확인하기</a>
+			<a href="view_reservations.php" class="button">예약 조회</a>
         </div>
     </li>
     <li>
         <div>
-            <div class="contents1">제작년도</div>
-            <div class="result">2023</div>
+            <div class="contents1">오늘의 카페 추천</div>
+            <a href="recommend.php" class="button">추천 확인</a>		
         </div>
     </li>
 </ul>
