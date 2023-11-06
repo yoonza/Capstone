@@ -39,7 +39,7 @@
         $result = mysqli_stmt_execute($stmt);
     
         if ($result) {
-            echo '<script>alert("선호하는 카페에 추가 되었습니다.");</script>';
+            echo '<script>alert("카페가 추가 되었습니다.");</script>';
         } else {
             echo '<script>alert("카페 등록 중 오류가 발생했습니다.");</script>';
         }
