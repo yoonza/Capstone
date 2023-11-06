@@ -146,7 +146,11 @@
     								$row = mysqli_fetch_array($result);
     								if ($row) {
         								$name = $row['name'];
-        								echo "<h4>{$name}님의 선호 카페</h4>";
+        								if (isset($_SESSION['roles']) && $_SESSION['roles'] === 'owner') {
+                                            echo "<h4>{$name} 사장님의 카페 등록</h4>";
+                                        } else {
+                                            echo "<h4>{$name}님의 선호 카페</h4>";
+                                        }
     								} else {
         								echo "<p>로그인 후 선호하는 카페를 등록해주세요.</p>";
     								}
@@ -156,20 +160,36 @@
 								}
 								?>
 									<dl>
-										<dt>1. 카페 리스트 추천 기능</dt>
-										<dd>매일 간디 그룹에서 직접 추천 카페 리스트를 제공합니다.</dd>
+                                    <div class="rm-order">
+										    <?php
+										        if (isset($_SESSION['roles']) && $_SESSION['roles'] === 'owner') {
+                                                    echo '<p><strong>카페 사장님이시라면?</strong><br>카페 등록 하기를 통해 사장님의 카페를 알려주세요!<br>';
+											        echo '<a href = "new_cafe.php"><button type = "button">카페 등록하기</button></a>';
+                                                    echo '<dt>만약 카페 사장님이 아닌 경우 카페를 등록하셨다면, 관리자에 의해 카페 등록이 취소 될 수 있습니다.<dt><br>';
+										        } else {
+											        echo '<dt><a href="cafelist.php">선호하는 카페 추가하기</a><dt><br>';
+										        }
+										    ?>
+										    </p>
+									    </div>
+                                        <?php
+                                        // cafes 테이블에서 멤버 이름이 gande_member 테이블의 name과 같은 행을 가져온다.
+                                        $sql = "SELECT * FROM cafes WHERE member_name = '{$name}'";
+                                        $result = mysqli_query($conn, $sql);
 
-										<dt>2. 사용자의 위치 인근의 카페 검색 기능</dt>
-										<dd>고객이 직접 인근의 카페를 찾고 방문할 수 있습니다.</dd>
-
-										<dt>3. 회원형 맞춤 서비스 제공</dt>
-										<dd>회원/비회원에 따라 선택형 서비스를 제공합니다.</dd>
-
-										<dt>4. 서비스 개선 상시 반영</dt>
-										<dd>불편사항 혹은 개선사항은 직접 문의가 가능합니다.</dd>
-										
-										<dt>5. 최상의 서비스 제공, 최대의 카페 정보 제공</dt>
-										<dd>항시 무료 프로그램을 제공하며, 원하는 카페를 모두 검색할 수 있습니다.</dd>
+                                        $count = 5;
+                                        $index = 1;
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            if ($index > $count) {
+                                                break;
+                                            }
+                                            $cafe_name = $row['cafe_name'];
+                                            $address = $row['address'];
+                                            echo "<dt>{$index}. {$cafe_name}</dt>";
+                                            echo "<dd>{$address}</dd>";
+                                            $index++;
+                                        }
+                                        ?>
 									</dl>
 
 									<h4>카페 예약 하러 가기</h4>
@@ -189,22 +209,11 @@
 								<div class="rm-content">
 									<h4>위치별 카페 추천</h4>
 									<dl>
-										<dt><a href="http://localhost/cafelist.php" style="font-weight:bold; text-decoration: none; color: red;">카페 검색하기</a></dt>
+										<dt><a href="http://localhost/cafe_search.php" style="font-weight:bold; text-decoration: none; color: red;">카페 검색하기</a></dt>
 										<dd><strong>서울 / 경기 / 대전 / 세종 / 강원 / 광주 / 대구 / 울산 / 부산 / 경북 / 경남 / 전남 / 전북 / 제주 / 충북 / 충남 / 인천</strong></dd>
 
 										<dt><a href="http://localhost/faq.php" style="font-weight:bold; color: red;">자주 묻는 질문(FAQ)</a></dt>
 										<dd><strong>GANDE에 관련된 궁금한 사항은 FAQ에서 확인할 수 있습니다.</strong></dd>
-										<dt>Maple Barbeque Tofu</dt>
-										<dd>Grilled marinated tofu, maple barbeque sauce, tahini slaw, grilled seasonal vegetables and mashed potatoes</dd>
-																													
-										<dt><a href="http://herbivoracious.com/2012/07/king-oyster-mushroom-with-roasted-cherries-and-sage-no-that-isnt-meat-recipe-and-thought-process.html" class="rm-viewdetails" data-thumb="images/4.jpg">Luxur Oyster</a></dt>
-										<dd>King oyster mushroom with roasted cherries and sage</dd>
-										
-										<dt><a href="http://herbivoracious.com/2012/09/rigatoni-with-roasted-cauliflower-and-spicy-tomato-sauce-recipe.html" class="rm-viewdetails" data-thumb="images/3.jpg">Rigatoni di Cavolfiore</a></dt>
-										<dd>Rigatoni with roasted cauliflower and spicy tomato sauce</dd>
-										
-										<dt><a href="http://herbivoracious.com/2012/06/saffron-chickpea-stew-with-grilled-porcini-mushroom-recipe.html" class="rm-viewdetails" data-thumb="images/14.jpg">Saffron Chana Secret</a></dt>
-										<dd>Saffron chickpea stew with grilled porcini mushrooms</dd>
 									</dl>
 								</div><!-- /rm-content -->
 								<div class="rm-overlay"></div>
