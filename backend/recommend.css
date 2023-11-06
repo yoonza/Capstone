@@ -71,11 +71,11 @@
 	padding: 30px;
 	box-shadow: 
 		inset 0 0 0 16px #fff, 
-		inset 0 0 0 17px #B7f0b1, 
+		inset 0 0 0 17px #8fbc8f, 
 		inset 0 0 0 18px #fff, 
-		inset 0 0 0 19px #B7f0b1, 
+		inset 0 0 0 19px #8fbc8f, 
 		inset 0 0 0 20px #fff, 
-		inset 0 0 0 21px #B7f0b1;
+		inset 0 0 0 21px #8fbc8f;
 
 }
 
@@ -131,7 +131,7 @@ a.rm-button-open,
 .rm-modal h5 {
 	font-weight: 700;
 	text-transform: uppercase;
-	font-family: 'Arvo', Arial, sans-serif;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .rm-logo {
@@ -142,11 +142,11 @@ a.rm-button-open,
 	margin: 20px auto;
 	box-shadow: 
 		0 0 0 3px #fff, 
-		0 0 0 4px #B7f0b1, 
+		0 0 0 4px #8fbc8f, 
 		0 0 0 5px #fff, 
-		0 0 0 6px #B7f0b1, 
+		0 0 0 6px #8fbc8f, 
 		0 0 0 7px #fff, 
-		0 0 0 8px #B7f0b1;
+		0 0 0 8px #8fbc8f;
 }
 
 .rm-content h2 {
@@ -161,7 +161,7 @@ a.rm-button-open,
 	padding: 20px 40px;
 	color: #323b4c;
 	font-weight: 500;
-	border-top: 4px double #B7f0b1;
+	border-top: 4px double #8fbc8f;
 	text-transform: uppercase;
 	line-height: 20px;
 	text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
@@ -172,8 +172,8 @@ a.rm-button-open,
 	font-size: 16px;
 	padding-bottom: 10px;
 	color: #323b4c;
-	border-bottom: 4px double #B7f0b1;
-	text-shadow: 1px 1px 0 #fff, 2px 2px 0 #B7f0b1;
+	border-bottom: 4px double #8fbc8f;
+	text-shadow: 1px 1px 0 #fff, 2px 2px 0 #8fbc8f;
 	letter-spacing: 2px;
 }
 
@@ -182,7 +182,7 @@ a.rm-button-open,
 }
 
 a.rm-button-open {
-	color: #B7f0b1;	
+	color: #8fbc8f;	
 	font-size: 16px;
 	line-height: 45px;
 	margin: 10px auto;
@@ -226,7 +226,7 @@ a.rm-button-open:hover {
 	font-size: 12px;
 	font-weight: bolder;
 	margin: 20px 0 0;
-	background-color: 	#8FBC8F;
+	background-color: #8fbc8f;
 }
 
 a.rm-viewdetails:before{
@@ -254,11 +254,11 @@ a.rm-viewdetails:before{
 	background: #fff url(white_paperboard.jpg);
 	box-shadow: 
 		inset 0 0 0 16px #fff, 
-		inset 0 0 0 17px #B7f0b1, 
+		inset 0 0 0 17px #8fbc8f, 
 		inset 0 0 0 18px #fff, 
-		inset 0 0 0 19px #B7f0b1, 
+		inset 0 0 0 19px #8fbc8f, 
 		inset 0 0 0 20px #fff, 
-		inset 0 0 0 21px #B7f0b1,
+		inset 0 0 0 21px #8fbc8f,
 		0 4px 20px rgba(0,0,0,0.4);
 	opacity: 0;
 	pointer-events: none;
@@ -292,12 +292,12 @@ a.rm-viewdetails:before{
 	content: '\2192';
 	display: inline-block;
 	margin-left: 3px;
-	font-family: Arial, sans-serif;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 a.rm-viewdetails,
 .rm-modal a {
-	color: #B7f0b1;
+	color: #8fbc8f;
 	font-weight: 500;
 }
 
@@ -340,7 +340,7 @@ a.rm-viewdetails:hover,
 	text-align: center;
 	line-height: 14px;
 	font-size: 15px;
-	font-family: Arial, sans-serif;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 
@@ -483,11 +483,11 @@ a.rm-viewdetails:hover,
 	margin-bottom: 10px;
 	box-shadow: 
 		inset 0 0 0 16px #fff, 
-		inset 0 0 0 17px #B7f0b1, 
+		inset 0 0 0 17px #8fbc8f, 
 		inset 0 0 0 18px #fff, 
-		inset 0 0 0 19px #B7f0b1, 
+		inset 0 0 0 19px #8fbc8f, 
 		inset 0 0 0 20px #fff, 
-		inset 0 0 0 21px #B7f0b1,
+		inset 0 0 0 21px #8fbc8f,
 		0 3px 5px rgba(0,0,0,0.2);
 }
 
@@ -575,11 +575,11 @@ a.rm-viewdetails:hover,
 		margin-bottom: 10px;
 		box-shadow: 
 			inset 0 0 0 16px #fff, 
-			inset 0 0 0 17px #B7f0b1, 
+			inset 0 0 0 17px #8fbc8f, 
 			inset 0 0 0 18px #fff, 
-			inset 0 0 0 19px #B7f0b1, 
+			inset 0 0 0 19px #8fbc8f, 
 			inset 0 0 0 20px #fff, 
-			inset 0 0 0 21px #B7f0b1,
+			inset 0 0 0 21px #8fbc8f,
 			0 3px 5px rgba(0,0,0,0.2);
 	}
 
