@@ -53,10 +53,18 @@ function createCalendar(year, month, today, lastDay, currentDateString) {
 
     const daysInMonth = lastDay;
 
-    // 현재 달의 첫 날짜 가져오기
-    const firstDay = new Date(year, month, 1).getDay();
+    // 요일 배열
+    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
 
-    const prevMonthDays = firstDay === 0 ? 6 : firstDay - 1;
+    // 이번 달의 첫 날짜의 요일 인덱스 가져오기
+    const firstDayIndex = new Date(year, month, 1).getDay();
+
+    // 첫 날짜를 요일에 맞춰서 표시
+    for (let i = 0; i < firstDayIndex; i++) {
+        const emptyElement = document.createElement('div');
+        emptyElement.classList.add('empty-day');
+        calendarGrid.appendChild(emptyElement);
+    }
 
     // 이번 달의 날짜
     for (let i = 1; i <= daysInMonth; i++) {
@@ -70,7 +78,6 @@ function createCalendar(year, month, today, lastDay, currentDateString) {
         // 오늘의 날짜인 경우에만 클릭 가능
         if (currentDate === currentDateString) {
             dayElement.classList.add('clickable');
-
         }
 
         // 오늘 날짜와 예약 정보가 있는 경우에만 예약 가능
