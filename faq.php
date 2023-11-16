@@ -5,9 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>자주 묻는 질문</title>
+    <script src="http://kit.fontawesome.com/e1a4d00b81.js" crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -82,23 +83,30 @@
             <div class="answer">A7. 메인페이지 상단의 고객센터 서비스를 이용하실 수 있습니다.</div>
         </div>
 
+        <div class="faq-item">
+            <div class="question">Q8. 카페 추천은 어떻게 받을 수 있나요?</div>
+            <div class="answer">A8. 메뉴판 추천페이지를 새로고침할 때마다 카페가 임의적으로 변경됩니다.</div>
+        </div>
+
         <!-- 추가적인 FAQ 아이템을 필요에 따라 복사해서 추가할 수 있습니다. -->
 
     </div>
 
     <script>
-        const faqItems = document.querySelectorAll('.faq-item');
+    const faqItems = document.querySelectorAll('.faq-item');
 
-        faqItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const answer = item.querySelector('.answer');
-                if (answer.style.display === 'none') {
-                    answer.style.display = 'block';
-                } else {
-                    answer.style.display = 'none';
-                }
-            });
+    faqItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            const answer = item.querySelector('.answer');
+            answer.style.display = 'block';
         });
-    </script>
+
+        item.addEventListener('mouseleave', () => {
+            const answer = item.querySelector('.answer');
+            answer.style.display = 'none';
+        });
+    });
+</script>
+
 </body>
 </html>
